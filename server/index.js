@@ -8,6 +8,16 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
+// Asia/Kolkata time helper
+function getKolkataDateTime() {
+  const now = new Date();
+  const ist = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  return {
+    date: ist.toISOString().split('T')[0],  // 2026-06-07
+    time: ist.toTimeString().split(' ')[0],  // 21:05:16
+  };
+}
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -29,14 +39,16 @@ const sheets = google.sheets({ version: 'v4', auth });
 app.post('/api/submit-contact', async (req, res) => {
   try {
     const { name, email, phone, company, website, role, companySize, service, budget, message } = req.body;
+    const { date, time } = getKolkataDateTime();
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
-      range: 'Contact Inquiries!A:K',
+      range: 'Contact Inquiries!A:L',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
-          new Date().toISOString(),
+          date,
+          time,
           name || '',
           email || '',
           phone || '',
@@ -62,14 +74,16 @@ app.post('/api/submit-contact', async (req, res) => {
 app.post('/api/submit-custom', async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
+    const { date, time } = getKolkataDateTime();
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
-      range: 'Custom Requirements!A:G',
+      range: 'Custom Requirements!A:H',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
-          new Date().toISOString(),
+          date,
+          time,
           name || '',
           email || '',
           phone || '',
