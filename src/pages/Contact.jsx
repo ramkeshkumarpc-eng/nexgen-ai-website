@@ -92,15 +92,17 @@ function Contact() {
       message: formData.message,
     };
 
-    const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
     try {
-      await fetch(GOOGLE_APPS_SCRIPT_URL, {
+      const res = await fetch(`${API_URL}/api/submit-contact`, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+
+      const result = await res.json();
+      if (!result.success) throw new Error('Server error');
 
       setStatus('success');
       setFormData({
