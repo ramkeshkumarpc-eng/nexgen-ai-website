@@ -54,14 +54,14 @@ function Services() {
                 <Link
                   key={service.id}
                   to={`/service/${service.id}`}
-                  className={`glass-card rounded-2xl p-4 sm:p-5 border ${service.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
+                  className={`glass-card rounded-xl p-3 sm:p-5 border ${service.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[130px] sm:min-h-[170px]`}
                 >
-                  <div className={`mb-3 ${service.iconColor}`}>
-                    <Icon className="w-8 h-8" />
+                  <div className={`mb-2 sm:mb-3 ${service.iconColor}`}>
+                    <Icon className="w-6 h-6 sm:w-8 h-8" />
                   </div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-3 leading-tight">{service.title}</h3>
-                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
-                    Learn More <ArrowRight className="w-3 h-3" />
+                  <h3 className="text-[11px] sm:text-sm md:text-base font-semibold mb-2 sm:mb-3 leading-tight">{service.title}</h3>
+                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-[10px] sm:text-xs font-medium">
+                    Learn More <ArrowRight className="w-2.5 h-2.5 sm:w-3 h-3" />
                   </div>
                 </Link>
               );
@@ -71,18 +71,18 @@ function Services() {
             {customService && (
               <Link
                 to={`/service/${customService.id}`}
-                className={`glass-card rounded-2xl p-4 sm:p-5 border-2 border-dashed ${customService.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
+                className={`glass-card rounded-xl p-3 sm:p-5 border-2 border-dashed ${customService.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[130px] sm:min-h-[170px]`}
               >
-                <div className={`mb-3 ${customService.iconColor}`}>
-                  <Sparkles className="w-8 h-8" />
+                <div className={`mb-2 sm:mb-3 ${customService.iconColor}`}>
+                  <Sparkles className="w-6 h-6 sm:w-8 h-8" />
                 </div>
-                <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1">{customService.title}</h3>
-                <div className="flex items-center gap-1 text-xs text-gray-400 mb-3">
-                  <MessageSquareText className="w-3 h-3" />
+                <h3 className="text-[11px] sm:text-sm md:text-base font-semibold mb-0.5">{customService.title}</h3>
+                <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-400 mb-2 sm:mb-3">
+                  <MessageSquareText className="w-2.5 h-2.5 sm:w-3 h-3" />
                   <span>Apni problem share karein</span>
                 </div>
-                <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
-                  Tell Us <ArrowRight className="w-3 h-3" />
+                <div className="mt-auto flex items-center gap-1 text-neon-blue text-[10px] sm:text-xs font-medium">
+                  Tell Us <ArrowRight className="w-2.5 h-2.5 sm:w-3 h-3" />
                 </div>
               </Link>
             )}
