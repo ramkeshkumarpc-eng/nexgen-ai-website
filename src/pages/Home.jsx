@@ -125,7 +125,7 @@ function Home() {
             {/* 3D Scene */}
             <motion.div
               variants={itemVariants}
-              className="h-[300px] sm:h-[400px] lg:h-[600px] relative"
+              className="h-[300px] sm:h-[400px] lg:h-[600px] relative flex justify-center"
             >
               <Scene />
             </motion.div>
