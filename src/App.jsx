@@ -13,7 +13,8 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const timer = setTimeout(() => window.scrollTo(0, 0), 50);
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;
@@ -22,7 +23,6 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <div className="min-h-screen bg-dark-bg text-white">
         <Navbar />
         <Routes>
@@ -33,6 +33,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
+        <ScrollToTop />
         <Footer />
       </div>
     </Router>
