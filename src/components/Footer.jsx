@@ -28,6 +28,7 @@ function Footer() {
                 { path: '/', label: 'Home' },
                 { path: '/services', label: 'Services' },
                 { path: '/about', label: 'About' },
+                { path: '/privacy', label: 'Privacy Policy' },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -79,7 +80,8 @@ function Footer() {
 
         <div className="border-t border-dark-border mt-8 pt-8 text-center">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} NexGen AI. All rights reserved.
+            &copy; {new Date().getFullYear()} NexGen AI. All rights reserved. |{' '}
+            <Link to="/privacy" className="hover:text-neon-blue transition-colors">Privacy Policy</Link>
           </p>
         </div>
       </div>
