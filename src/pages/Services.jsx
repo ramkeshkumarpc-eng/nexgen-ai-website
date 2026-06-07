@@ -48,56 +48,43 @@ function Services() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
-            {normalServices.map((service, index) => {
+            {normalServices.map((service) => {
               const Icon = service.icon;
               return (
-                <motion.div
+                <Link
                   key={service.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
+                  to={`/service/${service.id}`}
+                  className={`glass-card rounded-2xl p-4 sm:p-5 border ${service.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
                 >
-                  <Link
-                    to={`/service/${service.id}`}
-                    className={`block glass-card rounded-2xl p-6 border h-full ${service.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
-                  >
-                    <div className={`mb-3 ${service.iconColor}`}>
-                      <Icon className="w-8 h-8 sm:w-10 h-10" />
-                    </div>
-                    <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-3 leading-tight">{service.title}</h3>
-                    <p className="text-gray-400 text-xs mb-4 leading-relaxed line-clamp-2 hidden sm:block">
-                      {service.description}
-                    </p>
-                    <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
-                      Learn More <ArrowRight className="w-3 h-3" />
-                    </div>
-                  </Link>
-                </motion.div>
+                  <div className={`mb-3 ${service.iconColor}`}>
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-3 leading-tight">{service.title}</h3>
+                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
+                    Learn More <ArrowRight className="w-3 h-3" />
+                  </div>
+                </Link>
               );
             })}
 
             {/* Custom Requirement Card - dashed border */}
             {customService && (
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
+              <Link
+                to={`/service/${customService.id}`}
+                className={`glass-card rounded-2xl p-4 sm:p-5 border-2 border-dashed ${customService.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
               >
-                <Link
-                  to={`/service/${customService.id}`}
-                  className={`block glass-card rounded-2xl p-6 border-2 border-dashed h-full ${customService.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
-                >
-                  <div className={`mb-3 ${customService.iconColor}`}>
-                    <Sparkles className="w-8 h-8 sm:w-10 h-10" />
-                  </div>
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1">{customService.title}</h3>
-                  <div className="flex items-center gap-1 text-xs text-gray-400 mb-3">
-                    <MessageSquareText className="w-3 h-3" />
-                    <span>Apni problem share karein</span>
-                  </div>
-                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
-                    Tell Us <ArrowRight className="w-3 h-3" />
-                  </div>
-                </Link>
-              </motion.div>
+                <div className={`mb-3 ${customService.iconColor}`}>
+                  <Sparkles className="w-8 h-8" />
+                </div>
+                <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1">{customService.title}</h3>
+                <div className="flex items-center gap-1 text-xs text-gray-400 mb-3">
+                  <MessageSquareText className="w-3 h-3" />
+                  <span>Apni problem share karein</span>
+                </div>
+                <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
+                  Tell Us <ArrowRight className="w-3 h-3" />
+                </div>
+              </Link>
             )}
           </div>
         </div>
