@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Sparkles, MessageSquareText } from 'lucide-react';
+import { ArrowRight, Sparkles, MessageSquareText } from 'lucide-react';
 import services from '../data/services';
 
 function Services() {
@@ -58,25 +58,17 @@ function Services() {
                 >
                   <Link
                     to={`/service/${service.id}`}
-                    className={`block glass-card rounded-2xl p-6 md:p-8 border h-full ${service.color} transition-all duration-300`}
+                    className={`block glass-card rounded-2xl p-6 border h-full ${service.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
                   >
-                    <div className={`mb-4 ${service.iconColor}`}>
-                      <Icon className="w-10 h-10" />
+                    <div className={`mb-3 ${service.iconColor}`}>
+                      <Icon className="w-8 h-8 sm:w-10 h-10" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-3 leading-tight">{service.title}</h3>
+                    <p className="text-gray-400 text-xs mb-4 leading-relaxed line-clamp-2 hidden sm:block">
                       {service.description}
                     </p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                          <CheckCircle className={`w-4 h-4 shrink-0 ${service.iconColor}`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-6 flex items-center gap-1 text-neon-blue text-sm font-medium">
-                      Learn More <ArrowRight className="w-4 h-4" />
+                    <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
+                      Learn More <ArrowRight className="w-3 h-3" />
                     </div>
                   </Link>
                 </motion.div>
@@ -91,21 +83,18 @@ function Services() {
               >
                 <Link
                   to={`/service/${customService.id}`}
-                  className={`block glass-card rounded-2xl p-6 md:p-8 border-2 border-dashed h-full ${customService.color} transition-all duration-300 flex flex-col items-center text-center`}
+                  className={`block glass-card rounded-2xl p-6 border-2 border-dashed h-full ${customService.color} transition-all duration-300 flex flex-col items-center justify-center text-center min-h-[160px] sm:min-h-[180px]`}
                 >
-                  <div className={`mb-4 ${customService.iconColor}`}>
-                    <Sparkles className="w-12 h-12" />
+                  <div className={`mb-3 ${customService.iconColor}`}>
+                    <Sparkles className="w-8 h-8 sm:w-10 h-10" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{customService.title}</h3>
-                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                    {customService.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
-                    <MessageSquareText className="w-4 h-4" />
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1">{customService.title}</h3>
+                  <div className="flex items-center gap-1 text-xs text-gray-400 mb-3">
+                    <MessageSquareText className="w-3 h-3" />
                     <span>Apni problem share karein</span>
                   </div>
-                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-sm font-medium">
-                    Tell Us <ArrowRight className="w-4 h-4" />
+                  <div className="mt-auto flex items-center gap-1 text-neon-blue text-xs font-medium">
+                    Tell Us <ArrowRight className="w-3 h-3" />
                   </div>
                 </Link>
               </motion.div>
