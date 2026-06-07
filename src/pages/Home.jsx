@@ -83,11 +83,11 @@ function Home() {
       variants={containerVariants}
     >
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      <section className="relative flex items-center pt-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-blue/5 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
             <motion.div variants={itemVariants} className="relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-neon-blue text-sm mb-6">
@@ -125,7 +125,7 @@ function Home() {
             {/* 3D Scene */}
             <motion.div
               variants={itemVariants}
-              className="h-[400px] sm:h-[500px] lg:h-[600px] relative"
+              className="h-[300px] sm:h-[400px] lg:h-[600px] relative"
             >
               <Scene />
             </motion.div>
@@ -145,13 +145,13 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="glass-card rounded-2xl p-8 hover:border-neon-blue/30 transition-colors"
+                className="glass-card rounded-2xl p-6 md:p-8 hover:border-neon-blue/30 transition-colors"
               >
                 <div className="mb-4">{feature.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
@@ -167,7 +167,7 @@ function Home() {
       {/* Stats Section */}
       <section className="py-20 border-y border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -177,7 +177,7 @@ function Home() {
                 <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">
                   <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-gray-400 leading-tight">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -189,7 +189,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={itemVariants}
-            className="glass-card rounded-3xl p-12 text-center relative overflow-hidden"
+            className="glass-card rounded-2xl md:rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10" />
             <div className="relative z-10">

@@ -64,14 +64,14 @@ function Footer() {
           {/* Social */}
           <div>
             <h3 className="text-sm font-semibold text-white mb-4">Follow Us</h3>
-            <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors">
+            <div className="flex gap-2">
+              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors p-3">
                 <Globe className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors">
+              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors p-3">
                 <MessageCircle className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors">
+              <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors p-3">
                 <Share2 className="w-5 h-5" />
               </a>
             </div>

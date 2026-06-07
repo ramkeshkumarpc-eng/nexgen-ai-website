@@ -47,7 +47,7 @@ function Services() {
       {/* Services Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {normalServices.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -58,7 +58,7 @@ function Services() {
                 >
                   <Link
                     to={`/service/${service.id}`}
-                    className={`block glass-card rounded-2xl p-8 border h-full ${service.color} transition-all duration-300`}
+                    className={`block glass-card rounded-2xl p-6 md:p-8 border h-full ${service.color} transition-all duration-300`}
                   >
                     <div className={`mb-4 ${service.iconColor}`}>
                       <Icon className="w-10 h-10" />
@@ -91,7 +91,7 @@ function Services() {
               >
                 <Link
                   to={`/service/${customService.id}`}
-                  className={`block glass-card rounded-2xl p-8 border-2 border-dashed h-full ${customService.color} transition-all duration-300 flex flex-col items-center text-center`}
+                  className={`block glass-card rounded-2xl p-6 md:p-8 border-2 border-dashed h-full ${customService.color} transition-all duration-300 flex flex-col items-center text-center`}
                 >
                   <div className={`mb-4 ${customService.iconColor}`}>
                     <Sparkles className="w-12 h-12" />
@@ -126,7 +126,7 @@ function Services() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
               { step: '01', title: 'Discovery', desc: 'We analyze your business processes and identify automation opportunities.' },
               { step: '02', title: 'Design', desc: 'Custom AI solution architecture tailored to your specific needs.' },

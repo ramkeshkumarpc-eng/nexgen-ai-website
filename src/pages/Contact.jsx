@@ -135,7 +135,7 @@ function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-blue transition-colors"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-blue transition-colors py-3 min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Services
           </Link>
@@ -159,7 +159,7 @@ function Contact() {
       {/* Form Section */}
       <section className="py-12 pb-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={itemVariants} className="glass-card rounded-3xl p-8 sm:p-12">
+          <motion.div variants={itemVariants} className="glass-card rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12">
             {status === 'success' ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6">

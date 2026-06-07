@@ -233,7 +233,7 @@ function ServiceDetail() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-blue transition-colors"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-blue transition-colors py-3 min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Services
           </Link>
@@ -247,9 +247,9 @@ function ServiceDetail() {
             variants={itemVariants}
             className={`glass-card rounded-3xl p-10 sm:p-14 ${isCustom ? 'border-2 border-dashed border-purple-400/40' : ''}`}
           >
-            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8">
               <div className={`p-5 rounded-2xl bg-dark-bg border ${service.color}`}>
-                <Icon className={`w-16 h-16 ${service.iconColor}`} />
+                <Icon className={`w-12 h-12 md:w-16 h-16 ${service.iconColor}`} />
               </div>
               <div className="flex-1">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
@@ -437,7 +437,7 @@ function ServiceDetail() {
               </Link>
               <Link
                 to="/services"
-                className="px-8 py-3 rounded-lg border border-white/20 text-white hover:bg-white/5 transition-colors"
+                className="px-8 py-3 rounded-lg border border-white/20 text-white hover:bg-white/5 transition-colors min-h-[44px] flex items-center"
               >
                 Other Services
               </Link>

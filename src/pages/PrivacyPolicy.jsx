@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Lock, Eye, Database, Mail, Cookie, FileText, AlertTriangle } from 'lucide-react';
+import { Shield, Lock, Eye, Database, Mail, Cookie, FileText, AlertTriangle, Share2, ArrowLeft } from 'lucide-react';
 
 function PrivacyPolicy() {
   const sections = [

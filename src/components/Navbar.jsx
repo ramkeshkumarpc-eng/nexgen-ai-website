@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap } from 'lucide-react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -50,8 +60,10 @@ function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white"
+              className="md:hidden text-white p-2 w-10 h-10 flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -60,31 +72,38 @@ function Navbar() {
 
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="md:hidden glass border-t border-white/10">
-            <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => (
+          <>
+            {/* Overlay */}
+            <div
+              className="fixed inset-0 bg-black/50 z-[-1]"
+              onClick={() => setIsOpen(false)}
+            />
+            <div className="md:hidden glass border-t border-white/10">
+              <div className="px-4 py-4 space-y-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`block py-3 text-sm font-medium min-h-[44px] flex items-center ${
+                      isActive(link.path)
+                        ? 'text-neon-blue'
+                        : 'text-gray-300 hover:text-white'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
                 <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`block py-2 text-sm font-medium ${
-                    isActive(link.path)
-                      ? 'text-neon-blue'
-                      : 'text-gray-300 hover:text-white'
-                  }`}
+                  to="/services"
+                  className="block btn-primary text-center text-sm mt-4 min-h-[44px] flex items-center justify-center"
                   onClick={() => setIsOpen(false)}
                 >
-                  {link.label}
+                  Get Started
                 </Link>
-              ))}
-              <Link
-                to="/services"
-                className="block btn-primary text-center text-sm mt-4"
-                onClick={() => setIsOpen(false)}
-              >
-                Get Started
-              </Link>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </nav>

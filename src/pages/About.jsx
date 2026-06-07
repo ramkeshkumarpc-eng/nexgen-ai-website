@@ -71,7 +71,7 @@ function About() {
       {/* Mission & Vision */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <motion.div
               variants={itemVariants}
               className="glass-card rounded-2xl p-8"
@@ -152,7 +152,7 @@ function About() {
               <img
                 src="/AIS Certificet.png"
                 alt="AIS Certificate"
-                className="w-80 sm:w-96 md:w-[28rem] rounded-2xl glass-card p-4"
+                className="w-72 sm:w-80 md:w-[28rem] max-w-full rounded-2xl glass-card p-4"
               />
 
               <div className="max-w-2xl">
