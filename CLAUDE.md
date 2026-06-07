@@ -6,6 +6,7 @@
 - **Type:** React + Vite Multi-page SPA
 - **Location:** `c:\Users\hp\Agecy website\agency-website`
 - **Created:** 2026-06-07
+- **Last Updated:** 2026-06-07
 - **Stack:** React 19, Vite 6, Tailwind CSS 3.4, React Three Fiber, Framer Motion
 
 ---
@@ -16,7 +17,7 @@
 |---------------------|----------------------------------|
 | React 19            | UI Framework                     |
 | Vite 6              | Build Tool / Dev Server          |
-| React Router v6     | Client-side Routing              |
+| React Router v7     | Client-side Routing              |
 | Tailwind CSS 3.4    | Utility-first Styling            |
 | React Three Fiber   | 3D Scene in React               |
 | @react-three/drei   | 3D Helpers / Controls           |
@@ -31,26 +32,31 @@
 ```
 agency-website/
 ├── public/
+│   ├── Founder-Image.png
+│   ├── AIS Certificet.png
+│   └── video-placeholder.jpg
 ├── src/
 │   ├── data/
-│   │   └── services.js  # All 8 services data (icons, features, pain points)
-│   ├── assets/           # Static assets (images, logos)
+│   │   └── services.js       # All 9 services data (icons, features, pain points, +1 custom)
+│   ├── assets/
 │   ├── components/
-│   │   ├── Navbar.jsx    # Top nav with glassmorphism + mobile hamburger
-│   │   ├── Footer.jsx    # Footer with links, contact, social
+│   │   ├── Navbar.jsx        # Glassmorphism nav + mobile hamburger with scroll lock
+│   │   ├── Footer.jsx        # Links, contact, social, privacy policy
 │   │   └── 3d/
-│   │       └── Scene.jsx # R3F Canvas: icosahedron + particles
+│   │       └── Scene.jsx     # R3F Canvas: icosahedron + orbiting particles
 │   ├── pages/
-│   │   ├── Home.jsx      # Hero + 3D + Features + Stats + CTA
-│   │   ├── Services.jsx  # 8 Service Cards + 4-Step Process (clickable cards)
-│   │   ├── ServiceDetail.jsx  # Dynamic service detail page (pain points + video section)
-│   │   └── About.jsx     # Mission/Vision + Team + Values
-│   ├── App.jsx           # Router setup (BrowserRouter)
-│   ├── main.jsx          # Entry point (createRoot)
-│   └── index.css         # Tailwind directives + custom classes
-├── index.html            # HTML template (Google Fonts)
-├── tailwind.config.js    # Custom colors (dark/neon palette)
-├── postcss.config.js     # PostCSS setup
+│   │   ├── Home.jsx          # Hero + 3D centered + Features + Stats + CTA
+│   │   ├── Services.jsx      # 8 service cards (2-col on mobile, square) + custom card + process
+│   │   ├── ServiceDetail.jsx # Dynamic detail page per service (pain points, video, features)
+│   │   ├── Contact.jsx       # Contact form with validation + service selector
+│   │   ├── About.jsx         # Mission/Vision, founder, certificate, values
+│   │   └── PrivacyPolicy.jsx # 8-section privacy policy page
+│   ├── App.jsx               # Router + ScrollToTop component
+│   ├── main.jsx              # Entry point
+│   └── index.css             # Tailwind directives + glass/neon/btn classes
+├── index.html                # Google Fonts + meta viewport
+├── tailwind.config.js        # Dark neon palette
+├── postcss.config.js
 ├── package.json
 └── vite.config.js
 ```
@@ -59,24 +65,26 @@ agency-website/
 
 ## Pages
 
-| Route        | Page      | Description                                      |
-|--------------|-----------|--------------------------------------------------|
-| `/`              | Home           | 3D hero scene, feature cards, animated stats, CTA |
-| `/services`      | Services       | 8 AI service cards with process timeline (clickable) |
-| `/service/:id`   | ServiceDetail  | Dynamic detail page — pain points, video section, features |
-| `/about`         | About          | Mission/Vision, team avatars, company values       |
+| Route              | Page           | Description                                           |
+|--------------------|----------------|-------------------------------------------------------|
+| `/`                | Home           | 3D hero scene, feature cards, animated stats, CTA     |
+| `/services`        | Services       | Square compact cards (2-col mobile), 4-step process   |
+| `/service/:id`     | ServiceDetail  | Pain points, video section, features, custom form     |
+| `/contact`         | Contact        | Full form: name, email, phone, company, budget, etc.  |
+| `/about`           | About          | Mission/Vision, founder, AIS certificate, values      |
+| `/privacy`         | PrivacyPolicy  | Privacy policy with 8 sections + icons                |
 
 ---
 
 ## Custom CSS Classes (from `index.css`)
 
-| Class        | Effect                                              |
-|--------------|-----------------------------------------------------|
-| `.glass`     | Glassmorphism: semi-transparent + blur + border     |
-| `.glass-card`| Gradient glass card with shadow                     |
-| `.neon-text` | Cyan/Blue text glow                                 |
-| `.gradient-text` | Blue-to-Cyan gradient text (transparent bg)     |
-| `.btn-primary` | Gradient button (blue → purple) with hover lift |
+| Class            | Effect                                              |
+|------------------|-----------------------------------------------------|
+| `.glass`         | Glassmorphism: semi-transparent + blur + border     |
+| `.glass-card`    | Gradient glass card with shadow                     |
+| `.neon-text`     | Cyan/Blue text glow                                 |
+| `.gradient-text` | Blue-to-Cyan gradient text (transparent bg)         |
+| `.btn-primary`   | Gradient button (blue → purple) with hover lift     |
 
 ---
 
@@ -97,16 +105,28 @@ agency-website/
 
 - **File:** `src/components/3d/Scene.jsx`
 - **Main Shape:** Icosahedron with wireframe overlay
-- **Effects:** Floating animation (`<Float>`), orbiting particles, background particles
-- **Controls:** Auto-rotate, mouse orbit (no zoom/pan)
+- **Effects:** Floating animation (`<Float>`), orbiting particles (8), background particles (50)
+- **Controls:** Auto-rotate speed 0.5, mouse orbit (no zoom/pan)
 - **Lights:** Ambient + 2 point lights (blue + purple) + directional
+- **Mobile:** Container is flex centered with `justify-center`, height 300px
+
+---
+
+## Mobile Responsiveness Notes
+
+- **Navbar:** Hamburg menu has `w-10 h-10 p-2` for 44px+ touch target, mobile links `py-3`, body scroll lock with backdrop overlay
+- **Footer:** Social icons have `p-3` for touch target
+- **Home:** No `min-h-screen` on hero, 3D scene `h-[300px]` mobile / `h-[400px]` tablet / `h-[600px]` desktop
+- **Services:** Grid `grid-cols-2` on mobile (square compact cards), `md:grid-cols-3`, `lg:grid-cols-4`
+- **All back buttons:** `py-3 min-h-[44px]` for touch target
+- **ScrollToTop:** `<ScrollToTop />` in App.jsx auto-scrolls on every route change
 
 ---
 
 ## Commands
 
 ```bash
-npm run dev      # Start dev server
+npm run dev      # Start dev server (http://localhost:5173)
 npm run build    # Production build → dist/
 npm run preview  # Preview production build
 ```
@@ -146,3 +166,5 @@ npm run preview  # Preview production build
 - 3D scene uses WebGL — ensure browser compatibility
 - Brand icons (GitHub/Twitter/LinkedIn) not in latest `lucide-react` → using generic icons
 - Tailwind v3 used (v4 has breaking changes with `@tailwind` directives)
+- Privacy Policy, Contact, and About pages all fully responsive
+- .env file at root: `VITE_GOOGLE_APPS_SCRIPT_URL` for Google Apps Script integration
