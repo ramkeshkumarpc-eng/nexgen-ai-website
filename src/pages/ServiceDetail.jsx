@@ -6,6 +6,7 @@ import {
   ArrowRight,
   CheckCircle2,
   XCircle,
+  BookOpen,
   Play,
   Send,
   Sparkles,
@@ -454,6 +455,29 @@ function ServiceDetail() {
                     </div>
                   </Link>
                 )}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Book This Service */}
+          <section className="pb-20">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div variants={itemVariants} className="glass-card rounded-3xl p-10 sm:p-14 text-center border-2 border-neon-blue/20 hover:border-neon-blue/40 transition-all">
+                <div className={`inline-flex p-4 rounded-2xl bg-dark-bg border ${service.color} mb-6`}>
+                  <BookOpen className={`w-10 h-10 ${service.iconColor}`} />
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                  Book <span className="gradient-text">{service.title}</span> Now
+                </h2>
+                <p className="text-gray-400 max-w-xl mx-auto mb-8">
+                  Apni requirements batao aur hum 24 hours mein aapse contact karenge. Custom solution tailor-made for your business.
+                </p>
+                <Link
+                  to={`/contact?service=${service.id}`}
+                  className="btn-primary inline-flex items-center gap-2 text-lg px-10 py-4"
+                >
+                  <BookOpen className="w-5 h-5" /> Book This Service
+                </Link>
               </motion.div>
             </div>
           </section>
