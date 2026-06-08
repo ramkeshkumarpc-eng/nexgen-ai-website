@@ -1,7 +1,62 @@
-import React from 'react';
-import { Shield, Lock, Eye, Database, Mail, Cookie, FileText, AlertTriangle, Share2, ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, Lock, Eye, Database, Mail, Cookie, FileText, AlertTriangle, Share2, ArrowLeft, CheckCircle, Send, AlertCircle } from 'lucide-react';
 
 function PrivacyPolicy() {
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState(null);
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
+    if (!formData.message.trim()) newErrors.message = 'Please enter your message';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setSubmitting(true);
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      service: 'Privacy Policy Inquiry',
+      budget: '',
+      message: formData.message,
+    };
+
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
+    try {
+      const res = await fetch(`${API_URL}/api/submit-custom`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+      if (!result.success) throw new Error('Server error');
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      setStatus('error');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+  };
+
   const sections = [
     {
       icon: <FileText className="w-6 h-6 text-neon-blue" />,
@@ -134,7 +189,7 @@ function PrivacyPolicy() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section with Form */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <div className="glass rounded-xl p-8 text-center border border-dark-border">
           <h2 className="text-2xl font-bold mb-4">
@@ -143,12 +198,56 @@ function PrivacyPolicy() {
           <p className="text-gray-400 mb-6">
             If you have any questions or concerns about this privacy policy, feel free to reach out.
           </p>
-          <a
-            href="/contact"
-            className="btn-primary inline-block"
-          >
-            Contact Us
-          </a>
+
+          {status === 'success' ? (
+            <div className="py-8">
+              <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-green-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Thank You! 🎉</h3>
+              <p className="text-gray-400 mb-4">We have received your message. Our team will get back to you within 24 hours.</p>
+              <button onClick={() => setStatus(null)} className="btn-primary">Send Another Message</button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto text-left space-y-4">
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">Name <span className="text-red-400">*</span></label>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your name"
+                    className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${errors.name ? 'border-red-500/50' : 'border-dark-border'} text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50`} />
+                  {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">Email <span className="text-red-400">*</span></label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@email.com"
+                    className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${errors.email ? 'border-red-500/50' : 'border-dark-border'} text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50`} />
+                  {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-1">Phone <span className="text-red-400">*</span></label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 98765 43210"
+                    className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${errors.phone ? 'border-red-500/50' : 'border-dark-border'} text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50`} />
+                  {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-1">Message <span className="text-red-400">*</span></label>
+                <textarea name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Apna question ya concern likhein..."
+                  className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${errors.message ? 'border-red-500/50' : 'border-dark-border'} text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50 resize-none`} />
+                {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
+              </div>
+              {status === 'error' && (
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                  <AlertCircle className="w-5 h-5 shrink-0" />
+                  <span>Something went wrong. Please try again.</span>
+                </div>
+              )}
+              <button type="submit" disabled={submitting}
+                className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50">
+                {submitting ? 'Submitting...' : <><Send className="w-4 h-4" /> Send Message</>}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </div>
