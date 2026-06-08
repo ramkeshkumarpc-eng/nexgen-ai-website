@@ -109,7 +109,7 @@ const services = [
       '❌ Clients ko manual reminders dena time-consuming hai',
       '❌ Different calendars ko sync karna ek headache hai',
     ],
-    videoSrc: '',
+    videoSrc: 'https://drive.google.com/file/d/1X8xl-M9sSRDtUV7jN7L3x1pXHGBT4GLy/view?usp=sharing',
     color: 'border-neon-purple/30 hover:bg-neon-purple/5',
     iconColor: 'text-neon-purple',
   },

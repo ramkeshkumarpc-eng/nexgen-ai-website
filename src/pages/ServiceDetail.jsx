@@ -406,14 +406,35 @@ function ServiceDetail() {
 
               <motion.div variants={itemVariants} className="max-w-4xl mx-auto">
                 {service.videoSrc ? (
-                  <div className="aspect-video rounded-2xl overflow-hidden glass-card">
-                    <video
-                      src={service.videoSrc}
-                      controls
-                      className="w-full h-full object-cover"
-                      poster="/video-placeholder.jpg"
-                    />
-                  </div>
+                  service.videoSrc.includes('drive.google.com') ? (
+                    <a
+                      href={service.videoSrc}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="glass-card rounded-2xl p-16 text-center border-2 border-dashed border-neon-purple/40 hover:border-neon-purple/60 transition-all block group"
+                    >
+                      <div className="flex flex-col items-center gap-4">
+                        <div className="w-20 h-20 rounded-full bg-neon-purple/10 flex items-center justify-center group-hover:bg-neon-purple/20 transition-colors">
+                          <Play className="w-10 h-10 text-neon-purple" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold mb-2">Watch Demo Video 📹</h3>
+                          <p className="text-gray-400">
+                            Click to watch our Appointment Booking automation demo on Google Drive
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="aspect-video rounded-2xl overflow-hidden glass-card">
+                      <video
+                        src={service.videoSrc}
+                        controls
+                        className="w-full h-full object-cover"
+                        poster="/video-placeholder.jpg"
+                      />
+                    </div>
+                  )
                 ) : (
                   <Link
                     to="/contact"
