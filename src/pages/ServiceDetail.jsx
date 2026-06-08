@@ -190,6 +190,60 @@ function ServiceDetail() {
   const { serviceId } = useParams();
   const service = services.find((s) => s.id === serviceId);
 
+  const getSolutions = (serviceId) => {
+    const solutions = {
+      'ai-chatbots': [
+        'AI chatbot automatically handles repetitive customer queries — zero human effort, instant replies',
+        '24/7 intelligent chatbot support — always online, never misses a customer, no extra cost',
+        'Instant lead response with AI-powered qualification — captures conversions while you sleep',
+        'Automated ticket routing and resolution — no errors, no delays, full traceability',
+      ],
+      'process-automation': [
+        'Automated workflows eliminate manual tasks — employees focus on high-value work, hours saved daily',
+        'AI-powered data validation removes entry errors — 99.9% accuracy, no rework needed',
+        'Seamless tool-to-tool data sync — no manual transfers, no broken integrations',
+        'Streamlined automated approval pipelines — fast, organized, and fully auditable',
+      ],
+      'data-pipeline': [
+        'Automated data collection runs on schedule — reports are always on time, zero manual effort',
+        'Self-cleaning data pipelines handle transformation — your data arrives ready to use',
+        'Automated multi-source data merging — no complex scripts, no manual consolidation',
+        'Data quality checks run automatically — decisions are based on clean, reliable data',
+      ],
+      'ai-security': [
+        'AI detects security threats in real-time — no manual monitoring needed, threats caught instantly',
+        '24/7 automated monitoring without a dedicated team — saves hiring costs and coverage gaps',
+        'Smart alert filtering eliminates false positives — only real threats reach your team',
+        'Automated incident response triggers within seconds — containment happens before damage spreads',
+      ],
+      'lead-management': [
+        'Auto-capture leads from every channel — zero manual entry, zero data loss',
+        'Instant lead assignment to the right sales rep — no delays, no missed follow-ups',
+        'Duplicate detection merges identical leads automatically — sales team wastes zero time on duplicates',
+        'Automated lead tracking and follow-up sequences — every lead gets nurtured, nothing falls through cracks',
+      ],
+      'appointment-booking': [
+        'AI-powered scheduling prevents double-bookings and conflicts — calendar stays perfectly organized',
+        'Automated reminders via SMS/email reduce no-shows — fewer missed appointments means more revenue',
+        'Auto-generated client reminders — save hours of manual calling and messaging each week',
+        'Cross-platform calendar sync works automatically — Google, Outlook, and more, always in sync',
+      ],
+      'whatsapp-chatbot': [
+        'AI WhatsApp chatbot handles unlimited conversations — fast support without hiring an army',
+        'Instant responses to customer queries 24/7 — no waiting, no frustration, higher satisfaction',
+        'FAQ auto-answer eliminates repetitive replies — answer once, the bot handles every repeat',
+        'Centralized chatbot platform removes agent coordination chaos — one brain, perfect consistency',
+      ],
+      'invoice-extraction': [
+        'AI OCR extracts invoice data in seconds — no manual typing, 99%+ accuracy, hours saved',
+        'Handles any PDF format automatically — no templates needed, no format-specific coding',
+        'Auto-export to accounting software — one-click push, no manual data re-entry',
+        'Structured document storage with instant retrieval — every invoice organized and searchable',
+      ],
+    };
+    return solutions[serviceId] || [];
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -323,15 +377,13 @@ function ServiceDetail() {
                     <CheckCircle2 className="w-5 h-5" /> After Our Automation
                   </h3>
                   <div className="space-y-4">
-                    {service.painPoints.map((_, i) => (
+                    {getSolutions(service.id).map((solution, i) => (
                       <motion.div
                         key={i}
                         variants={itemVariants}
                         className="glass-card rounded-xl p-5 border border-green-500/20"
                       >
-                        <p className="text-gray-300">
-                          ✅ Yeh problem fully automatic ho jayegi — no manual work, no delays, no errors.
-                        </p>
+                        <p className="text-gray-300">✅ {solution}</p>
                       </motion.div>
                     ))}
                   </div>
