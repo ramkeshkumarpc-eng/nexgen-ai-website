@@ -77,11 +77,7 @@ function Home() {
   ];
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
+    <>
       {/* Offer Banner */}
       <div className="px-4 sm:px-6 lg:px-8 pt-4 max-w-7xl mx-auto w-full">
         <div className="p-2.5 md:p-3 rounded-lg bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10 border border-neon-blue/20 text-center">
@@ -91,6 +87,11 @@ function Home() {
         </div>
       </div>
 
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       {/* Hero Section */}
       <section className="relative flex items-center pt-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-blue/5 to-transparent pointer-events-none" />
@@ -222,7 +223,7 @@ function Home() {
         </div>
       </section>
     </motion.div>
-  );
+    </>
 }
 
 export default Home;
