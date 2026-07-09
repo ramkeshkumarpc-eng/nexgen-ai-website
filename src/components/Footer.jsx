@@ -16,7 +16,8 @@ function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Transforming businesses with intelligent automation solutions.
+              NexGen Solutions is owned and operated by <br />
+              Ramkesh Kumar (GST: Trendokart)
             </p>
           </div>
 
@@ -52,7 +53,7 @@ function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-gray-400">
                 <Phone className="w-4 h-4 text-neon-blue" />
-                +91 98765 43210
+                +91 9579372988
               </li>
               <li className="flex items-center gap-2 text-sm text-gray-400">
                 <MapPin className="w-4 h-4 text-neon-blue" />
@@ -76,6 +77,17 @@ function Footer() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Offer Banner */}
+        <div className="mt-10 p-4 rounded-lg bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10 border border-neon-blue/20 text-center">
+          <p className="text-sm md:text-base font-semibold text-white">
+            🎉 <span className="text-neon-cyan">Free Automation Setup</span> +{' '}
+            <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today!
+          </p>
+          <p className="text-xs text-gray-400 mt-1">
+            Limited time offer. No credit card required.
+          </p>
         </div>
 
         <div className="border-t border-dark-border mt-8 pt-8 text-center">
