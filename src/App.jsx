@@ -25,6 +25,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-dark-bg text-white">
         <Navbar />
+        <div className="pt-[38px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -33,6 +34,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
+        </div>
         <ScrollToTop />
         <Footer />
       </div>

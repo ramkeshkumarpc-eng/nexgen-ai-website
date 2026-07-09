@@ -78,12 +78,36 @@ function Home() {
 
   return (
     <>
-      {/* Offer Banner */}
+      {/* Professional Offer Banner */}
       <div className="px-4 sm:px-6 lg:px-8 pt-4 max-w-7xl mx-auto w-full">
-        <div className="p-2.5 md:p-3 rounded-lg bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10 border border-neon-blue/20 text-center">
-          <p className="text-xs sm:text-sm md:text-base font-semibold text-white">
-            🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today!
-          </p>
+        <div className="relative group">
+          {/* Glow effect behind */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 via-neon-blue/20 to-neon-purple/20 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Main banner */}
+          <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-gradient-to-r from-dark-card/90 via-dark-card/95 to-dark-card/90 border border-neon-blue/20 overflow-hidden">
+            {/* Subtle bg gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/5 via-transparent to-neon-purple/5 pointer-events-none" />
+            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-xs font-semibold text-neon-blue">
+                  ⚡ Setup Free
+                </span>
+                <span className="text-white/40 hidden sm:inline">+</span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-xs font-semibold text-neon-cyan">
+                  🎁 1 Month Trial
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-gray-400 font-medium">
+                — Limited time offer. Start your AI journey today!
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-neon-blue hover:text-neon-cyan transition-colors whitespace-nowrap"
+              >
+                Claim Now <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -91,7 +115,7 @@ function Home() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-    >
+      >
       {/* Hero Section */}
       <section className="relative flex items-center pt-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-blue/5 to-transparent pointer-events-none" />
