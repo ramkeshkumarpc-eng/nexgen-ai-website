@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bot, Workflow, TrendingUp, ChevronRight } from 'lucide-react';
 import Scene from '../components/3d/Scene';
+import OfferSection from '../components/OfferSection';
 
 function AnimatedCounter({ target, suffix = '' }) {
   const [count, setCount] = useState(0);
@@ -78,37 +79,9 @@ function Home() {
 
   return (
     <>
-      {/* Professional Offer Banner */}
+      {/* Professional Offer Banner - Prominent Hero Offer */}
       <div className="px-4 sm:px-6 lg:px-8 pt-4 max-w-7xl mx-auto w-full">
-        <div className="relative group">
-          {/* Glow effect behind */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 via-neon-blue/20 to-neon-purple/20 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
-          {/* Main banner */}
-          <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-gradient-to-r from-dark-card/90 via-dark-card/95 to-dark-card/90 border border-neon-blue/20">
-            {/* Subtle bg gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/5 via-transparent to-neon-purple/5 pointer-events-none" />
-            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-center sm:text-left">
-              <div className="flex items-center gap-1.5 flex-wrap justify-center">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-xs font-semibold text-neon-blue whitespace-nowrap">
-                  ⚡ Setup Free
-                </span>
-                <span className="text-white/40 hidden sm:inline text-xs">+</span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-xs font-semibold text-neon-cyan whitespace-nowrap">
-                  🎁 1 Month Trial
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-gray-400 font-medium">
-                — Limited time offer. Start your AI journey today!
-              </p>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-neon-blue hover:text-neon-cyan transition-colors whitespace-nowrap"
-              >
-                Claim Now <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <OfferSection />
       </div>
 
     <motion.div
