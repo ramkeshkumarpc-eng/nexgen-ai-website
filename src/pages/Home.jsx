@@ -84,16 +84,16 @@ function Home() {
           {/* Glow effect behind */}
           <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 via-neon-blue/20 to-neon-purple/20 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
           {/* Main banner */}
-          <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-gradient-to-r from-dark-card/90 via-dark-card/95 to-dark-card/90 border border-neon-blue/20 overflow-hidden">
+          <div className="relative p-3 sm:p-4 md:p-5 rounded-xl bg-gradient-to-r from-dark-card/90 via-dark-card/95 to-dark-card/90 border border-neon-blue/20">
             {/* Subtle bg gradient */}
             <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/5 via-transparent to-neon-purple/5 pointer-events-none" />
-            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-xs font-semibold text-neon-blue">
+            <div className="relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 text-center sm:text-left">
+              <div className="flex items-center gap-1.5 flex-wrap justify-center">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-xs font-semibold text-neon-blue whitespace-nowrap">
                   ⚡ Setup Free
                 </span>
-                <span className="text-white/40 hidden sm:inline">+</span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-xs font-semibold text-neon-cyan">
+                <span className="text-white/40 hidden sm:inline text-xs">+</span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-xs font-semibold text-neon-cyan whitespace-nowrap">
                   🎁 1 Month Trial
                 </span>
               </div>
@@ -117,7 +117,7 @@ function Home() {
       variants={containerVariants}
       >
       {/* Hero Section */}
-      <section className="relative flex items-center pt-16 overflow-hidden">
+      <section className="relative flex items-center pt-28">
         <div className="absolute inset-0 bg-gradient-to-b from-neon-blue/5 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

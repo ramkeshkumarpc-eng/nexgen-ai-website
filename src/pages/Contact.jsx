@@ -54,9 +54,7 @@ function Contact() {
     if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
     else if (!/^[0-9+\-\s()]{7,20}$/.test(formData.phone))
       newErrors.phone = 'Invalid phone number';
-    if (!formData.company.trim()) newErrors.company = 'Company name is required';
     if (!formData.role.trim()) newErrors.role = 'Your role is required';
-    if (!formData.companySize) newErrors.companySize = 'Please select company size';
     if (!formData.service) newErrors.service = 'Please select a service';
     if (!formData.budget) newErrors.budget = 'Please select a budget range';
     setErrors(newErrors);
@@ -131,7 +129,7 @@ function Contact() {
       variants={containerVariants}
     >
       {/* Back Button */}
-      <section className="pt-24 pb-0">
+      <section className="pt-28 pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/services"
@@ -241,7 +239,7 @@ function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Company Name <span className="text-red-400">*</span>
+                      Company Name <span className="text-gray-500">(optional)</span>
                     </label>
                     <input
                       type="text"
@@ -249,13 +247,8 @@ function Contact() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your company name"
-                      className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${
-                        errors.company ? 'border-red-500/50' : 'border-dark-border'
-                      } text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50 transition-colors`}
+                      className="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white placeholder-gray-500 focus:outline-none focus:border-neon-blue/50 transition-colors"
                     />
-                    {errors.company && (
-                      <p className="text-red-400 text-xs mt-1">{errors.company}</p>
-                    )}
                   </div>
                 </div>
 
@@ -297,15 +290,13 @@ function Contact() {
                 {/* Row 4: Company Size */}
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Company Size <span className="text-red-400">*</span>
+                    Company Size <span className="text-gray-500">(optional)</span>
                   </label>
                   <select
                     name="companySize"
                     value={formData.companySize}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl bg-dark-bg border ${
-                      errors.companySize ? 'border-red-500/50' : 'border-dark-border'
-                    } text-white focus:outline-none focus:border-neon-blue/50 transition-colors`}
+                    className="w-full px-4 py-3 rounded-xl bg-dark-bg border border-dark-border text-white focus:outline-none focus:border-neon-blue/50 transition-colors"
                   >
                     <option value="" disabled>
                       Select company size...
@@ -316,9 +307,6 @@ function Contact() {
                       </option>
                     ))}
                   </select>
-                  {errors.companySize && (
-                    <p className="text-red-400 text-xs mt-1">{errors.companySize}</p>
-                  )}
                 </div>
 
                 {/* Service Selection */}
