@@ -84,13 +84,9 @@ function Home() {
     >
       {/* Offer Banner */}
       <div className="px-4 sm:px-6 lg:px-8 pt-4 max-w-7xl mx-auto w-full">
-        <div className="p-3 rounded-lg bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10 border border-neon-blue/20 text-center">
-          <p className="text-sm md:text-base font-semibold text-white">
-            🎉 <span className="text-neon-cyan">Free Automation Setup</span> +{' '}
-            <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today!
-          </p>
-          <p className="text-xs text-gray-400 mt-0.5">
-            Limited time offer. No credit card required.
+        <div className="p-2.5 md:p-3 rounded-lg bg-gradient-to-r from-neon-blue/10 via-neon-purple/10 to-neon-cyan/10 border border-neon-blue/20 text-center">
+          <p className="text-xs sm:text-sm md:text-base font-semibold text-white">
+            🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today!
           </p>
         </div>
       </div>
