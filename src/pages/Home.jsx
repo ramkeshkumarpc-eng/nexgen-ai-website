@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bot, Workflow, TrendingUp, ChevronRight } from 'lucide-react';
 import Scene from '../components/3d/Scene';
-import OfferSection from '../components/OfferSection';
 
 function AnimatedCounter({ target, suffix = '' }) {
   const [count, setCount] = useState(0);
@@ -79,11 +78,7 @@ function Home() {
 
   return (
     <>
-      {/* Professional Offer Banner - Prominent Hero Offer */}
-      <div className="px-4 sm:px-6 lg:px-8 pt-4 max-w-7xl mx-auto w-full">
-        <OfferSection />
-      </div>
-
+      
     <motion.div
       initial="hidden"
       animate="visible"
