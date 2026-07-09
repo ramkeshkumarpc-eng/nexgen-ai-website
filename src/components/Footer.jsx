@@ -16,8 +16,7 @@ function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Nexgen Solutions is owned and operated by <br />
-              Ramkesh Kumar (Trendokart)
+              Nexgen Solutions is owned and operated by Ramkesh Kumar (Trendokart)
             </p>
           </div>
 
