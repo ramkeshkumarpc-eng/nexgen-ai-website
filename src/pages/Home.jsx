@@ -224,6 +224,7 @@ function Home() {
       </section>
     </motion.div>
     </>
+  );
 }
 
 export default Home;
