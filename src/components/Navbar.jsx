@@ -26,17 +26,7 @@ function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <>
-      {/* Scrolling Announcement Bar */}
-      <div className="fixed top-0 left-0 right-0 z-40 bg-dark-bg border-b border-neon-blue/20">
-        <div className="marquee-wrapper py-1.5 sm:py-2">
-          <div className="marquee-content text-xs sm:text-sm text-white font-medium tracking-wide">
-            🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp; 🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp;
-          </div>
-        </div>
-      </div>
-
-      <nav className="fixed top-[38px] sm:top-[40px] left-0 right-0 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="glass">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -117,7 +107,6 @@ function Navbar() {
         )}
       </div>
     </nav>
-    </>
   );
 }
 

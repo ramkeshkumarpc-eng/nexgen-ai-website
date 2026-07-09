@@ -25,7 +25,14 @@ function App() {
     <Router>
       <div className="min-h-screen bg-dark-bg text-white">
         <Navbar />
-        <div className="pt-[38px]">
+        {/* Scrolling Announcement Bar */}
+        <div className="bg-dark-bg border-b border-neon-blue/20">
+          <div className="marquee-wrapper py-1.5 sm:py-2">
+            <div className="marquee-content text-xs sm:text-sm text-white font-medium tracking-wide">
+              🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp; 🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp;
+            </div>
+          </div>
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -34,7 +41,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
-        </div>
         <ScrollToTop />
         <Footer />
       </div>
