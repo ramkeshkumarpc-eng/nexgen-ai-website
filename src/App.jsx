@@ -23,14 +23,13 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-dark-bg text-white">
+      <div className="min-h-screen bg-dark-bg text-white w-full max-w-full overflow-x-hidden">
         <Navbar />
         {/* Scrolling Announcement Bar */}
-        <div className="bg-dark-bg border-b border-neon-blue/20">
-          <div className="marquee-wrapper py-1.5 sm:py-2">
-            <div className="marquee-content text-xs sm:text-sm text-white font-medium tracking-wide">
-              🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp; 🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp;
-            </div>
+        <div className="bg-dark-bg border-b border-neon-blue/20 marquee-wrapper py-1.5 sm:py-2">
+          <div className="marquee-content text-xs sm:text-sm text-white font-medium tracking-wide">
+            <span>🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp;</span>
+            <span>🎉 <span className="text-neon-cyan">Free Automation Setup</span> + <span className="text-neon-blue">1 Month Free Trial</span> — Start your AI journey today! &nbsp;•&nbsp;</span>
           </div>
         </div>
         <Routes>
